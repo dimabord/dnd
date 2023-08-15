@@ -1,5 +1,5 @@
 class Character:
-    def __init__(self, strength, dexterity, constitution, intelligence, wisdom, charisma, name):
+    def __init__(self, strength, dexterity, constitution, intelligence, wisdom, charisma, hitpoints, def_class, name):
         self.strength = strength
         self.dexterity = dexterity
         self.constitution = constitution
@@ -8,8 +8,8 @@ class Character:
         self.charisma = charisma
         self.name = name
         self.weapons = {}
-        self.hitpoints = 0
-        self.def_class = 0
+        self.hitpoints = hitpoints
+        self.def_class = def_class
 
     def set_stats(self, hitpoints, def_class):
         self.hitpoints = hitpoints
@@ -21,4 +21,6 @@ class Character:
     def attack(self, weapon_name):
         self.weapons[weapon_name].attack()
 
+    def lower_hitpoints(self, attack_hitpoints):
+        self.hitpoints = max(0, self.hitpoints - attack_hitpoints)
 
